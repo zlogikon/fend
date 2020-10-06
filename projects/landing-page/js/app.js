@@ -45,6 +45,10 @@ const topButton = document.querySelector("#topButton");
 
 // Scroll to anchor ID using scrollTO event
 
+topButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 
 /**
  * End Main Functions
