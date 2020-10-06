@@ -49,6 +49,14 @@ topButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+window.addEventListener("scroll", function () {
+  if (document.documentElement.scrollTop < 500) {
+    topButton.style.display = "none";
+  } else {
+    topButton.style.display = "block";
+  }
+});
+
 
 /**
  * End Main Functions
