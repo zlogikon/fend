@@ -66,17 +66,26 @@ buildNav();
 navbarList.insertAdjacentHTML('beforeend', navItems);
 
 
-
 // Add class 'active' to section when near top of viewport
 
 
 // Scroll to anchor ID using scrollTO event
+navbarList.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log("clicked");
+    let sectionView = document.getElementById(id);
+    //sectionView = event.target.section.id;
+    sectionView.scrollIntoView({behavior: 'smooth'});
+});
 
-topButton.addEventListener("click", function() {
+
+
+
+topButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", () => {
   if (document.documentElement.scrollTop < 500) {
     topButton.style.display = "none";
   }
