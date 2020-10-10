@@ -18,9 +18,14 @@
  *
 */
 //Create list of sections
+let navItems = "";
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list");
 const topButton = document.querySelector("#topButton");
+const navMenu = document.querySelector("#navMenu");
+
+
+
 
 
 /**
@@ -35,9 +40,31 @@ const topButton = document.querySelector("#topButton");
  * End Helper Functions
  * Begin Main Functions
  *
+
+
 */
 
+
+
 // build the nav
+
+
+
+
+
+function buildNav() {
+  for (section of sections){
+    let id = section.id;
+    let dataName = section.dataset.name;
+    navItems += `<li><a class="menu__link ${id}" href="#${id}">${dataName}</a></li>`;
+  }
+  return buildNav;
+};
+
+buildNav();
+
+navbarList.insertAdjacentHTML('beforeend', navItems);
+
 
 
 // Add class 'active' to section when near top of viewport
@@ -45,14 +72,15 @@ const topButton = document.querySelector("#topButton");
 
 // Scroll to anchor ID using scrollTO event
 
-topButton.addEventListener("click", () => {
+topButton.addEventListener("click", function() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", function() {
   if (document.documentElement.scrollTop < 500) {
     topButton.style.display = "none";
-  } else {
+  }
+  else {
     topButton.style.display = "block";
   }
 });
