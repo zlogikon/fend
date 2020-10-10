@@ -86,7 +86,7 @@ topButton.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-  if (document.documentElement.scrollTop < 500) {
+  if (document.documentElement.scrollTop < 475) {
     topButton.style.display = "none";
   }
   else {
