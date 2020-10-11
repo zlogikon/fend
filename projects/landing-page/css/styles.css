@@ -89,7 +89,7 @@ section {
     transition: ease 0.3s all;
 }
 
-.active {
+.your-active-link {
     background: #999;
 
 }

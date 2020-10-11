@@ -64,16 +64,16 @@ buildNav = () => {
 isInViewport = () => {
   for (const section of sections) {
     let rect = section.getBoundingClientRect();
-    newRect = document.querySelector(`#${section.id}`);
+     = document.querySelector(`#${section.id}`);
     navLink = document.querySelector(`#navLink__${section.id}`);
     if (rect.top <= 80 && rect.bottom >= 80) {
       console.log("In viewport")
       newRect.classList.add("your-active-class");
-      navLink.classList.add("active");
+      navLink.classList.add("your-active-link");
     } else {
       console.log("Not in viewport")
       newRect.classList.remove("your-active-class");
-      navLink.classList.remove("active");
+      navLink.classList.remove("your-active-link");
     }
   }
 }
