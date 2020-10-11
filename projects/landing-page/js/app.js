@@ -55,7 +55,7 @@ buildNav = () => {
   return buildNav;
 };
 
-buildNav();
+
 
 
 // Add class 'active' to section when near top of viewport
@@ -102,6 +102,10 @@ scrollToTop = () => {
 */
 
 // Build menu
+
+buildNav();
+
+
 navbarList.insertAdjacentHTML('beforeend', navItems);
 
 navLink = document.querySelector("#navLink__section2");
