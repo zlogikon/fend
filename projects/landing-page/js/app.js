@@ -66,7 +66,7 @@ isInViewport = () => {
     let rect = section.getBoundingClientRect();
     sectionView = document.querySelector(`#${section.id}`);
     navLink = document.querySelector(`#navLink__${section.id}`);
-    if (rect.top <= 80 && rect.bottom >= 80) {
+    if (rect.top <= 200 && rect.bottom >= 200) {
       console.log("In viewport")
       sectionView.classList.add("your-active-class");
       navLink.classList.add("your-active-link");
