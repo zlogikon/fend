@@ -47,49 +47,40 @@ const navMenu = document.querySelector("#navMenu");
 
 
 
-// build the nav
+// build the navBar
 buildNav = () => {
   for (section of sections){
     let id = section.id;
     let dataName = section.dataset.name;
-    navItems += `<li><a class="menu__link" data-target="${id}" href="#${id}">${dataName}</a></li>`;
+    navItems += `<li><a class="menu__link" data-target="${id}" href="">${dataName}</a></li>`;
   }
   return buildNav;
 };
-buildNav();
 
-navbarList.insertAdjacentHTML('beforeend', navItems);
 
 
 // Add class 'active' to section when near top of viewport
 
 
-// Scroll to anchor ID using scrollTO event
+
+
+
+
+
+// Scroll to anchor ID using scrollTo event
 
 navBarClick = (ev) => {
   event.preventDefault();
   newTarget = document.querySelector(`#${ev.target.dataset.target}`);;
-  scrollingTo(newTarget);
+  newTarget.scrollIntoView({behavior: 'smooth'});
 };
 
 
+//Top button
 
-
-navbarList.addEventListener("click", navBarClick);
-
-
-scrollingTo = (target) => {
-  //let scrollTarget = document.getElementById(target);
-  //console.log(target.offsetTop);
-  target.scrollIntoView({behavior: 'smooth'});
-};
-
-
-
-
-topButton.addEventListener("click", () => {
+scrollTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
+};
 
 window.addEventListener("scroll", () => {
   if (document.documentElement.scrollTop < 435) {
@@ -108,9 +99,13 @@ window.addEventListener("scroll", () => {
 */
 
 // Build menu
+buildNav();
+navbarList.insertAdjacentHTML('beforeend', navItems);
 
 // Scroll to section on link click
+navbarList.addEventListener("click", navBarClick);
 
-
+//Top button
+topButton.addEventListener("click", scrollTop);
 
 // Set sections as active
