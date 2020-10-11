@@ -52,7 +52,7 @@ const navMenu = document.querySelector("#navMenu");
 
 
 
-function buildNav() {
+buildNav = () => {
   for (section of sections){
     let id = section.id;
     let dataName = section.dataset.name;
@@ -71,12 +71,19 @@ navbarList.insertAdjacentHTML('beforeend', navItems);
 
 // Scroll to anchor ID using scrollTO event
 navbarList.addEventListener("click", function(event) {
-    event.preventDefault();
-    console.log("clicked");
-    let sectionView = document.getElementById(id);
-    //sectionView = event.target.section.id;
-    sectionView.scrollIntoView({behavior: 'smooth'});
+  event.preventDefault();
+  console.log("clicked");
+  //Create loop to assign scrollTo to eack line item, passing in id for each
+
+  scrollingTo("section1");
+
 });
+
+scrollingTo = (target) => {
+  let scrollTarget = document.getElementById(target);
+  console.log(scrollTarget.offsetTop);
+  scrollTarget.scrollIntoView({behavior: 'smooth'});
+};
 
 
 
@@ -104,5 +111,7 @@ window.addEventListener("scroll", () => {
 // Build menu
 
 // Scroll to section on link click
+
+
 
 // Set sections as active
