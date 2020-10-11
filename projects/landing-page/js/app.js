@@ -18,6 +18,7 @@
  *
 */
 //Create list of sections
+let newTarget = "";
 let navItems = "";
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list");
@@ -47,20 +48,14 @@ const navMenu = document.querySelector("#navMenu");
 
 
 // build the nav
-
-
-
-
-
 buildNav = () => {
   for (section of sections){
     let id = section.id;
     let dataName = section.dataset.name;
-    navItems += `<li><a class="menu__link ${id}" href="#${id}">${dataName}</a></li>`;
+    navItems += `<li><a class="menu__link" data-target="${id}" href="#${id}">${dataName}</a></li>`;
   }
   return buildNav;
 };
-
 buildNav();
 
 navbarList.insertAdjacentHTML('beforeend', navItems);
@@ -70,19 +65,23 @@ navbarList.insertAdjacentHTML('beforeend', navItems);
 
 
 // Scroll to anchor ID using scrollTO event
-navbarList.addEventListener("click", function(event) {
+
+navBarClick = (ev) => {
   event.preventDefault();
-  console.log("clicked");
-  //Create loop to assign scrollTo to eack line item, passing in id for each
+  newTarget = document.querySelector(`#${ev.target.dataset.target}`);;
+  scrollingTo(newTarget);
+};
 
-  scrollingTo("section1");
 
-});
+
+
+navbarList.addEventListener("click", navBarClick);
+
 
 scrollingTo = (target) => {
-  let scrollTarget = document.getElementById(target);
-  console.log(scrollTarget.offsetTop);
-  scrollTarget.scrollIntoView({behavior: 'smooth'});
+  //let scrollTarget = document.getElementById(target);
+  //console.log(target.offsetTop);
+  target.scrollIntoView({behavior: 'smooth'});
 };
 
 
@@ -93,7 +92,7 @@ topButton.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-  if (document.documentElement.scrollTop < 475) {
+  if (document.documentElement.scrollTop < 435) {
     topButton.style.display = "none";
   }
   else {
