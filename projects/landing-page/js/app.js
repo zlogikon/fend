@@ -18,13 +18,15 @@
  *
 */
 //Create list of sections
-let navLink = "";
-let newTarget = "";
-let navItems = "";
+
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list");
 const topButton = document.querySelector("#topButton");
 const navMenu = document.querySelector("#navMenu");
+let navLink = "";
+let newTarget = "";
+let navItems = "";
+let newRect = "";
 
 
 
@@ -34,7 +36,6 @@ const navMenu = document.querySelector("#navMenu");
  * Start Helper Functions
  *
 */
-let newRect = document.querySelector("#section2");
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -61,16 +62,19 @@ buildNav = () => {
 // Add class 'active' to section when near top of viewport
 
 isInViewport = () => {
-  let rect = newRect.getBoundingClientRect();
-  if (rect.top <= 80 && rect.bottom >= 80) {
-    console.log("In viewport")
-    newRect.classList.add("your-active-class");
-    navLink.classList.add("active");
-  } else {
-    console.log("Not in viewport")
-    newRect.classList.remove("your-active-class");
-    navLink.classList.remove("active");
-
+  for (const section of sections) {
+    let rect = section.getBoundingClientRect();
+    newRect = document.querySelector(`#${section.id}`);
+    navLink = document.querySelector(`#navLink__${section.id}`);
+    if (rect.top <= 80 && rect.bottom >= 80) {
+      console.log("In viewport")
+      newRect.classList.add("your-active-class");
+      navLink.classList.add("active");
+    } else {
+      console.log("Not in viewport")
+      newRect.classList.remove("your-active-class");
+      navLink.classList.remove("active");
+    }
   }
 }
 
@@ -108,7 +112,6 @@ buildNav();
 
 navbarList.insertAdjacentHTML('beforeend', navItems);
 
-navLink = document.querySelector("#navLink__section2");
 
 
 // Scroll to section on link click
